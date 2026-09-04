@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Calculator - Volume, Concentration & Reconstitution</title>
+  <meta name="description" content="Calculate peptide concentration, mathematical volume, and syringe tick markings from user-entered amounts and liquid volumes. Fast, private, and educational.">
+  <link rel="canonical" href="https://example.com/calculator.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Peptide Calculator",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All modern web browsers",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "Educational mathematical peptide concentration and reconstitution dilution calculator."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+        </span>
+        Peptide Calculator
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="calculator.html" aria-current="page">Peptide Calculator</a>
+        <a class="nav-link" href="concentration-calculator.html">Concentration</a>
+        <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+        <a class="nav-link" href="how-it-works.html">How It Works</a>
+        <a class="nav-link" href="faq.html">FAQ</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link nav-cta" href="calculator.html">Launch Tool</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <div class="calc-wrapper">
+        <div class="calc-header">
+          <span class="badge"><span class="badge-dot"></span> Primary Calculation Engine</span>
+          <h1>Peptide Reconstitution & Volume Calculator</h1>
+          <p class="lead">Enter peptide mass, liquid diluent volume, and your desired mathematical amount to calculate concentration and syringe draw volume.</p>
+        </div>
+
+        <!-- Educational Preset Chips -->
+        <div class="presets-bar" aria-label="Quick mathematical preset examples">
+          <span class="presets-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Click To Load Example:
+          </span>
+          <button type="button" class="preset-chip" data-preset data-peptide="5" data-punit="mg" data-volume="2" data-vunit="mL" data-dose="250" data-dunit="mcg" data-syringe="u100-1ml">5 mg in 2 mL &bull; 250 mcg dose</button>
+          <button type="button" class="preset-chip" data-preset data-peptide="10" data-punit="mg" data-volume="2" data-vunit="mL" data-dose="500" data-dunit="mcg" data-syringe="u100-1ml">10 mg in 2 mL &bull; 500 mcg dose</button>
+          <button type="button" class="preset-chip" data-preset data-peptide="5" data-punit="mg" data-volume="1" data-vunit="mL" data-dose="100" data-dunit="mcg" data-syringe="u100-05ml">5 mg in 1 mL &bull; 100 mcg dose</button>
+          <button type="button" class="preset-chip" data-preset data-peptide="2" data-punit="mg" data-volume="1" data-vunit="mL" data-dose="50" data-dunit="mcg" data-syringe="u100-03ml">2 mg in 1 mL &bull; 50 mcg dose</button>
+        </div>
+
+        <!-- Main Form -->
+        <form id="main-calculator-form" novalidate>
+          <div class="form-grid">
+            <!-- 1. Peptide Amount -->
+            <div class="form-group">
+              <div class="field-label-group">
+                <label class="field-label" for="peptide-amount">1. Peptide Amount</label>
+                <span class="field-helper">Vial dry mass</span>
+              </div>
+              <div class="input-combo">
+                <input type="number" id="peptide-amount" name="peptideAmount" step="any" min="0" placeholder="e.g. 5" required aria-describedby="err-peptide-amount">
+                <select id="peptide-unit" name="peptideUnit" aria-label="Peptide amount unit">
+                  <option value="mg" selected>mg</option>
+                  <option value="mcg">mcg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+              <span class="field-error-msg" id="err-peptide-amount" role="alert"></span>
+            </div>
+
+            <!-- 2. Diluent Volume -->
+            <div class="form-group">
+              <div class="field-label-group">
+                <label class="field-label" for="liquid-volume">2. Diluent / Liquid Volume</label>
+                <span class="field-helper">Reconstitution liquid</span>
+              </div>
+              <div class="input-combo">
+                <input type="number" id="liquid-volume" name="liquidVolume" step="any" min="0" placeholder="e.g. 2" required aria-describedby="err-liquid-volume">
+                <select id="liquid-unit" name="liquidUnit" aria-label="Liquid volume unit">
+                  <option value="mL" selected>mL</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <span class="field-error-msg" id="err-liquid-volume" role="alert"></span>
+            </div>
+
+            <!-- 3. Desired Dose -->
+            <div class="form-group">
+              <div class="field-label-group">
+                <label class="field-label" for="desired-dose">3. Desired Dose</label>
+                <span class="field-helper">User-entered target</span>
+              </div>
+              <div class="input-combo">
+                <input type="number" id="desired-dose" name="desiredDose" step="any" min="0" placeholder="e.g. 250" required aria-describedby="err-desired-dose">
+                <select id="dose-unit" name="doseUnit" aria-label="Desired dose unit">
+                  <option value="mcg" selected>mcg</option>
+                  <option value="mg">mg</option>
+                </select>
+              </div>
+              <span class="field-error-msg" id="err-desired-dose" role="alert"></span>
+            </div>
+
+            <!-- 4. Syringe Information -->
+            <div class="form-group">
+              <div class="field-label-group">
+                <label class="field-label" for="syringe-type">4. Syringe Information</label>
+                <span class="field-helper">Capacity & markings</span>
+              </div>
+              <div class="input-combo">
+                <select id="syringe-type" name="syringeType" aria-label="Syringe capacity and marking type" style="width: 100%; border-left: none;">
+                  <option value="u100-1ml">1.0 mL Syringe (U-100 / 100 Units)</option>
+                  <option value="u100-05ml">0.5 mL Syringe (U-100 / 50 Units)</option>
+                  <option value="u100-03ml">0.3 mL Syringe (U-100 / 30 Units)</option>
+                  <option value="u40-1ml">1.0 mL Syringe (U-40 / 40 Units)</option>
+                  <option value="ml-3ml">3.0 mL Standard Syringe (mL only)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Calculate Results
+            </button>
+            <button type="button" class="btn btn-secondary" data-action="reset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              Clear / Reset Form
+            </button>
+          </div>
+
+          <div class="form-status-alert" id="form-error-alert" role="alert"></div>
+        </form>
+
+        <!-- Interactive Syringe Graphic -->
+        <div class="syringe-visualizer" aria-label="Syringe measurement diagram">
+          <div class="syringe-head">
+            <span class="syringe-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="2" x2="22" y2="6"/><path d="m7.5 4.21 4.5 4.5"/><line x1="10.5" y1="1.21" x2="13.5" y2="4.21"/><path d="m2 22 4.5-4.5"/><path d="M14 6 8 12l2 2 6-6Z"/></svg>
+              Syringe Fill Level Visualizer
+            </span>
+            <span class="syringe-badge" id="syringe-fill-badge">0 Units</span>
+          </div>
+
+          <div class="syringe-container">
+            <div class="syringe-needle"></div>
+            <div class="syringe-hub"></div>
+            <div class="syringe-barrel">
+              <div class="syringe-fluid" id="syringe-fluid"></div>
+              <div class="syringe-ticks">
+                <div class="syringe-tick major"><span class="syringe-tick-label">0</span></div>
+                <div class="syringe-tick"></div>
+                <div class="syringe-tick major"><span class="syringe-tick-label">25%</span></div>
+                <div class="syringe-tick"></div>
+                <div class="syringe-tick major"><span class="syringe-tick-label">50%</span></div>
+                <div class="syringe-tick"></div>
+                <div class="syringe-tick major"><span class="syringe-tick-label">75%</span></div>
+                <div class="syringe-tick"></div>
+                <div class="syringe-tick major"><span class="syringe-tick-label">100%</span></div>
+              </div>
+            </div>
+            <div class="syringe-plunger"></div>
+            <div class="syringe-plunger-rod"></div>
+            <div class="syringe-plunger-thumb"></div>
+          </div>
+
+          <div class="syringe-legend">
+            <span>0 (Needle end)</span>
+            <span id="syringe-units-output">Draw Level: 0 Units</span>
+            <span>Full Capacity</span>
+          </div>
+          <div id="syringe-warning" style="color: var(--error); font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; display: none;"></div>
+        </div>
+
+        <!-- Results Card -->
+        <div class="results-card" id="results-card" hidden aria-live="polite">
+          <div class="results-header">
+            <h2>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Calculation Results
+            </h2>
+            <span class="results-badge">Verified Mathematical Output</span>
+          </div>
+
+          <div class="results-grid">
+            <div class="metric-box">
+              <span class="metric-label">Peptide Concentration</span>
+              <span class="metric-value" id="res-conc-mg">—</span>
+              <span class="metric-sub">Base ratio (mg/mL)</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-label">Concentration (mcg/mL)</span>
+              <span class="metric-value" id="res-conc-mcg">—</span>
+              <span class="metric-sub">Microgram equivalent</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-label">User-Entered Dose</span>
+              <span class="metric-value" id="res-entered-dose">—</span>
+              <span class="metric-sub">Mathematical dose input</span>
+            </div>
+
+            <div class="metric-box highlight">
+              <span class="metric-label">Required Liquid Volume</span>
+              <span class="metric-value" id="res-required-volume">—</span>
+              <span class="metric-sub" id="res-syringe-units">—</span>
+            </div>
+          </div>
+
+          <div class="summary-banner" id="res-summary-text"></div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary btn-sm" data-action="copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Results
+            </button>
+          </div>
+
+          <!-- Step-by-Step Mathematical Trace -->
+          <div class="math-trace">
+            <button type="button" class="math-trace-trigger" aria-expanded="false">
+              <span>View Step-by-Step Arithmetic Trace</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="math-trace-content">
+              <div class="trace-step">
+                <span class="step-num">1</span>
+                <div id="trace-step-1"></div>
+              </div>
+              <div class="trace-step">
+                <span class="step-num">2</span>
+                <div id="trace-step-2"></div>
+              </div>
+              <div class="trace-step">
+                <span class="step-num">3</span>
+                <div id="trace-step-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Educational Guidance Below Calculator -->
+      <div style="margin-top: 3.5rem; max-width: 850px;">
+        <h2>Understanding the Reconstitution Formula</h2>
+        <p style="margin-bottom: 1.5rem;">
+          Peptide reconstitution arithmetic relies on standard mass-by-volume dimensional analysis. When a dry powder of mass $M$ is dissolved completely in liquid diluent of volume $V_{liquid}$, the resulting concentration $C$ is:
+        </p>
+        <div class="formula-card">
+          <h3>Formulas Applied:</h3>
+          <div class="formula-display">
+            Concentration (C) = Mass ÷ Volume<br>
+            Required Volume (V) = Dose ÷ Concentration
+          </div>
+          <p>
+            Example: 10 mg dry mass dissolved into 2 mL bacteriostatic solution creates a 5 mg/mL concentration. An entered dose of 500 mcg (0.5 mg) requires: 0.5 mg ÷ 5 mg/mL = 0.1 mL (10 units on a standard U-100 syringe).
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Mandatory Medical & Educational Disclaimer -->
+  <section class="disclaimer-section" aria-label="Educational Disclaimer">
+    <div class="container">
+      <div class="disclaimer-box">
+        <div class="disclaimer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Medical & Educational Disclaimer</h4>
+          <p>
+            This calculator is for educational and mathematical purposes only. It does not provide medical advice, treatment recommendations, or personalized dosing instructions. Always follow the instructions provided by a qualified healthcare professional and the product's official labeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <span class="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+            </span>
+            Peptide Calculator
+          </a>
+          <p>Educational mathematical tools for peptide concentration, dilution, and unit conversions.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Calculators</h5>
+          <ul>
+            <li><a href="calculator.html">Master Calculator</a></li>
+            <li><a href="concentration-calculator.html">Concentration Tool</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Educational</h5>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="how-it-works.html#formulas">Mathematical Formulas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>About & Trust</h5>
+          <ul>
+            <li><a href="about.html">About This Project</a></li>
+            <li><a href="about.html#privacy">Privacy & Local Math</a></li>
+            <li><a href="about.html#disclaimer">Full Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Peptide Calculator. For educational and mathematical purposes only.</span>
+        <span>Zero cookies &bull; Zero tracking &bull; 100% Client-Side</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

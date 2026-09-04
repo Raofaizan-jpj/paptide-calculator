@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Calculator FAQ - Concentration, Math & Units</title>
+  <meta name="description" content="Answers to common questions about peptide concentration calculations, unit conversions (mg to mcg, mL to L), volume formulas, and mathematical education.">
+  <link rel="canonical" href="https://example.com/faq.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a peptide calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A peptide calculator is an educational mathematical tool designed to calculate solution concentration, reconstitution dilution ratios, and required volumetric liquid amounts from user-entered numeric values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is concentration calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Concentration is calculated by dividing total peptide mass by the total diluent liquid volume (Concentration = Mass ÷ Volume) after converting both values into compatible metric units (such as mg and mL)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert mg to mcg?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To convert milligrams (mg) to micrograms (mcg), multiply the value by 1,000. For example, 2 mg equals 2,000 mcg (2 × 1,000 = 2,000)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert mL to L?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To convert milliliters (mL) to liters (L), divide the milliliter value by 1,000. For example, 500 mL equals 0.5 L (500 ÷ 1,000 = 0.5)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does mg/mL mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "mg/mL stands for milligrams per milliliter. It describes how many milligrams of peptide powder are dissolved inside each milliliter of liquid solution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is volume calculated from concentration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Required volume is calculated by dividing the desired dose amount by the concentration of the solution (Volume = Desired Dose ÷ Concentration)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the calculator results medical advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The calculator results are strictly mathematical outputs calculated purely from the numbers you enter. It does not provide medical advice, diagnosis, treatment recommendations, or personalized dosing guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I verify product instructions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Different pharmaceutical compounds, peptide vials, and manufacturer preparations require specific diluents, sterile handling procedures, and clinical dosages. Only official product labeling and licensed healthcare providers provide authorized medical direction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a U-100 syringe and how do units translate to mL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A U-100 syringe is calibrated such that 100 units equal exactly 1.0 mL. Therefore, 1 unit on a U-100 syringe represents 0.01 mL. For example, a volume of 0.1 mL corresponds to 10 units."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+        </span>
+        Peptide Calculator
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="calculator.html">Peptide Calculator</a>
+        <a class="nav-link" href="concentration-calculator.html">Concentration</a>
+        <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+        <a class="nav-link" href="how-it-works.html">How It Works</a>
+        <a class="nav-link" href="faq.html" aria-current="page">FAQ</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link nav-cta" href="calculator.html">Launch Tool</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <div style="text-align: center; max-width: 750px; margin-inline: auto; margin-bottom: 3.5rem;">
+        <span class="badge"><span class="badge-dot"></span> Knowledge Base</span>
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead">Common questions regarding peptide reconstitution math, concentration formulas, metric unit conversions, and safe educational usage.</p>
+      </div>
+
+      <div class="faq-stack">
+        <!-- Q1 -->
+        <article class="faq-item open">
+          <button type="button" class="faq-question" aria-expanded="true">
+            <span>What is a peptide calculator?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              A peptide calculator is an educational mathematical tool that helps users solve equations involving solute mass, liquid diluent volume, solution concentration, and volumetric draw amounts. It operates purely on mathematical formulas and the numbers entered by the user.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q2 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How is concentration calculated?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Concentration is calculated by dividing the total mass of the peptide by the total volume of liquid solvent added:<br>
+              <code>Concentration = Mass ÷ Volume</code><br>
+              Both numbers are converted into base units (typically milligrams and milliliters) before calculation, yielding a concentration in mg/mL. Multiplying by 1,000 gives mcg/mL.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q3 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How do I convert mg to mcg?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              To convert milligrams (mg) to micrograms (mcg), multiply the number of milligrams by 1,000. For example:
+              <code>2 mg × 1,000 = 2,000 mcg</code>. Conversely, to convert micrograms to milligrams, divide by 1,000 (e.g., 250 mcg ÷ 1,000 = 0.25 mg).
+            </p>
+          </div>
+        </article>
+
+        <!-- Q4 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How do I convert mL to L?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              To convert milliliters (mL) to liters (L), divide the milliliter amount by 1,000. For example:
+              <code>500 mL ÷ 1,000 = 0.5 L</code>. Conversely, to convert liters to milliliters, multiply by 1,000 (e.g., 0.002 L × 1,000 = 2 mL).
+            </p>
+          </div>
+        </article>
+
+        <!-- Q5 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>What does mg/mL mean?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              <code>mg/mL</code> represents milligrams of peptide mass dissolved per single milliliter of solution. It is the standard density metric used in laboratories to express liquid medication strength. A solution of 5 mg/mL contains 5 milligrams of active substance in each 1.0 mL of reconstituted liquid.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q6 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>How is volume calculated from concentration?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Required liquid volume is calculated by dividing the desired dose mass by the solution's concentration:<br>
+              <code>Volume (mL) = Desired Dose (mg) ÷ Concentration (mg/mL)</code><br>
+              For example, if you want a dose of 0.5 mg from a 5 mg/mL concentration, the required volume is: <code>0.5 ÷ 5 = 0.1 mL</code>.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q7 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>Are the calculator results medical advice?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              <strong>No.</strong> The results generated by this website are strictly mathematical calculations based entirely on user inputs. They do not constitute medical advice, diagnosis, therapy recommendations, or clinical dosage guidelines. Never make health decisions without consulting a qualified medical provider.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q8 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>Why should I verify product instructions?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Pharmaceutical and laboratory preparations have specific storage stability conditions, specific diluent compatibility requirements (e.g. sterile bacteriostatic water vs. saline), and designated protocols. Only official package inserts and healthcare providers provide validated instructions.
+            </p>
+          </div>
+        </article>
+
+        <!-- Q9 -->
+        <article class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>What is a U-100 syringe and how do units translate to mL?</span>
+            <span class="faq-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              A U-100 syringe has barrel tick markings where 100 units equal 1.0 mL of liquid. Each individual unit marking represents 0.01 mL (1/100th of a milliliter). To convert a volume in mL to U-100 units, simply multiply the milliliter volume by 100 (e.g. 0.15 mL × 100 = 15 units).
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Mandatory Medical & Educational Disclaimer -->
+  <section class="disclaimer-section" aria-label="Educational Disclaimer">
+    <div class="container">
+      <div class="disclaimer-box">
+        <div class="disclaimer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Medical & Educational Disclaimer</h4>
+          <p>
+            This calculator is for educational and mathematical purposes only. It does not provide medical advice, treatment recommendations, or personalized dosing instructions. Always follow the instructions provided by a qualified healthcare professional and the product's official labeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <span class="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+            </span>
+            Peptide Calculator
+          </a>
+          <p>Educational mathematical calculators for peptide concentration, dilution, and unit conversions.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Calculators</h5>
+          <ul>
+            <li><a href="calculator.html">Master Calculator</a></li>
+            <li><a href="concentration-calculator.html">Concentration Tool</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Educational</h5>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="how-it-works.html#formulas">Mathematical Formulas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>About & Trust</h5>
+          <ul>
+            <li><a href="about.html">About This Project</a></li>
+            <li><a href="about.html#privacy">Privacy & Local Math</a></li>
+            <li><a href="about.html#disclaimer">Full Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Peptide Calculator. For educational and mathematical purposes only.</span>
+        <span>Zero cookies &bull; Zero tracking &bull; 100% Client-Side</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

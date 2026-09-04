@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Peptide Calculations Work - Mathematical Formulas & Logic</title>
+  <meta name="description" content="Learn the mathematics behind peptide concentration, dilution volume, and unit conversion. Transparent formulas and step-by-step educational arithmetic.">
+  <link rel="canonical" href="https://example.com/how-it-works.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "How Peptide Calculations Work - Mathematical Formulas & Logic",
+    "url": "https://example.com/how-it-works/",
+    "description": "Educational guide explaining the mathematical formulas and arithmetic behind peptide dilution, concentration, and volumetric calculations."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+        </span>
+        Peptide Calculator
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="calculator.html">Peptide Calculator</a>
+        <a class="nav-link" href="concentration-calculator.html">Concentration</a>
+        <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+        <a class="nav-link" href="how-it-works.html" aria-current="page">How It Works</a>
+        <a class="nav-link" href="faq.html">FAQ</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link nav-cta" href="calculator.html">Launch Tool</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container" style="max-width: 880px;">
+      <span class="badge"><span class="badge-dot"></span> Mathematical Education</span>
+      <h1>How Peptide Calculations Work</h1>
+      <p class="lead">
+        Peptide calculations are built on fundamental chemical arithmetic: mass normalization, volumetric concentration, and dimensional analysis. Here is a comprehensive breakdown of every equation and step.
+      </p>
+
+      <!-- Step 1: Normalization -->
+      <section style="margin-top: 3rem;">
+        <h2>1. Step One: Base Unit Normalization</h2>
+        <p>
+          Before performing any mathematical division or multiplication, all inputs must be converted into common base units. Without normalization, dividing micrograms by milliliters or milligrams by liters leads to massive exponential calculation errors.
+        </p>
+        <p>
+          Our calculation engine normalizes all mass inputs into <strong>milligrams (mg)</strong> and all liquid volumes into <strong>milliliters (mL)</strong>:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="converter-table">
+            <thead>
+              <tr>
+                <th>Measurement Group</th>
+                <th>Entered Unit</th>
+                <th>Conversion to Base</th>
+                <th>Base Unit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mass</td>
+                <td>Grams (g)</td>
+                <td>Multiply by 1,000</td>
+                <td>mg</td>
+              </tr>
+              <tr>
+                <td>Mass</td>
+                <td>Milligrams (mg)</td>
+                <td>Multiply by 1 (native)</td>
+                <td>mg</td>
+              </tr>
+              <tr>
+                <td>Mass</td>
+                <td>Micrograms (mcg)</td>
+                <td>Divide by 1,000 (or multiply by 0.001)</td>
+                <td>mg</td>
+              </tr>
+              <tr>
+                <td>Liquid Volume</td>
+                <td>Liters (L)</td>
+                <td>Multiply by 1,000</td>
+                <td>mL</td>
+              </tr>
+              <tr>
+                <td>Liquid Volume</td>
+                <td>Milliliters (mL)</td>
+                <td>Multiply by 1 (native)</td>
+                <td>mL</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Step 2: Concentration -->
+      <section style="margin-top: 3rem;" id="formulas">
+        <h2>2. Concentration Formula</h2>
+        <p>
+          Concentration represents the amount of solute mass dissolved per unit of liquid solvent volume. The fundamental formula is:
+        </p>
+
+        <div class="formula-card">
+          <h3>Concentration Equation:</h3>
+          <div class="formula-display">
+            Concentration (mg/mL) = Peptide Mass (mg) ÷ Liquid Volume (mL)
+          </div>
+          <p>
+            To express concentration in micrograms per milliliter (mcg/mL), multiply the result by 1,000:<br>
+            <strong>Concentration (mcg/mL) = Concentration (mg/mL) × 1,000</strong>
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-badge">Ex</span>
+          <div class="step-content">
+            <h4>Worked Arithmetic Example:</h4>
+            <p>
+              Suppose a vial contains <strong>5 mg</strong> of peptide powder and is reconstituted with <strong>2 mL</strong> of bacteriostatic water.<br>
+              &bull; Concentration = 5 mg ÷ 2 mL = <strong>2.5 mg/mL</strong><br>
+              &bull; In micrograms: 2.5 mg/mL × 1,000 = <strong>2,500 mcg/mL</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3: Required Volume -->
+      <section style="margin-top: 3rem;">
+        <h2>3. Dose-to-Volume Formula</h2>
+        <p>
+          Once concentration is established, calculating the liquid volume needed for any desired user-entered dose requires rearranging the concentration equation:
+        </p>
+
+        <div class="formula-card">
+          <h3>Required Volume Equation:</h3>
+          <div class="formula-display">
+            Required Volume (mL) = Desired Dose (mg) ÷ Concentration (mg/mL)
+          </div>
+          <p>
+            If the dose is provided in micrograms (mcg), convert it to milligrams first by dividing by 1,000 before dividing by concentration in mg/mL.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-badge">Ex</span>
+          <div class="step-content">
+            <h4>Worked Arithmetic Example:</h4>
+            <p>
+              Using the previous solution of <strong>2.5 mg/mL</strong> (2,500 mcg/mL), suppose an educational user enters a dose of <strong>250 mcg</strong>:<br>
+              &bull; Convert dose: 250 mcg ÷ 1,000 = 0.25 mg<br>
+              &bull; Volume = 0.25 mg ÷ 2.5 mg/mL = <strong>0.1 mL</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 4: Syringe Markings -->
+      <section style="margin-top: 3rem;">
+        <h2>4. Understanding Syringe Markings & Units</h2>
+        <p>
+          Standard insulin/peptide syringes are typically calibrated in "Units" rather than decimal milliliters to make micro-volumes easier to measure accurately:
+        </p>
+        <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-secondary); line-height: 1.8;">
+          <li><strong>U-100 Syringe:</strong> Designed so that <strong>100 Units = 1.0 mL</strong>. Therefore, 1 Unit = 0.01 mL. To calculate units: <code>Volume in mL × 100</code>. (e.g. 0.1 mL = 10 units).</li>
+          <li><strong>0.5 mL U-100 Syringe:</strong> Holds up to 50 Units (0.5 mL). Each unit still equals 0.01 mL.</li>
+          <li><strong>0.3 mL U-100 Syringe:</strong> Holds up to 30 Units (0.3 mL), often featuring half-unit marks for precision.</li>
+          <li><strong>U-40 Syringe:</strong> Designed so that <strong>40 Units = 1.0 mL</strong>. Therefore, 1 Unit = 0.025 mL. To calculate units: <code>Volume in mL × 40</code>.</li>
+        </ul>
+      </section>
+
+      <!-- Step 5: Educational Context -->
+      <section style="margin-top: 3rem;">
+        <h2>5. Strict Mathematical Boundary</h2>
+        <p>
+          All equations described on this website represent universal mathematical arithmetic. They do not represent medical recommendations, clinical protocols, or dosing schedules. Medical dosing depends on clinical diagnosis, pharmaceutical product monographs, and guidance from licensed healthcare providers.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Mandatory Medical & Educational Disclaimer -->
+  <section class="disclaimer-section" aria-label="Educational Disclaimer">
+    <div class="container">
+      <div class="disclaimer-box">
+        <div class="disclaimer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Medical & Educational Disclaimer</h4>
+          <p>
+            This calculator is for educational and mathematical purposes only. It does not provide medical advice, treatment recommendations, or personalized dosing instructions. Always follow the instructions provided by a qualified healthcare professional and the product's official labeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <span class="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+            </span>
+            Peptide Calculator
+          </a>
+          <p>Educational mathematical calculators for peptide concentration, dilution, and unit conversions.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Calculators</h5>
+          <ul>
+            <li><a href="calculator.html">Master Calculator</a></li>
+            <li><a href="concentration-calculator.html">Concentration Tool</a></li>
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Educational</h5>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="how-it-works.html#formulas">Mathematical Formulas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>About & Trust</h5>
+          <ul>
+            <li><a href="about.html">About This Project</a></li>
+            <li><a href="about.html#privacy">Privacy & Local Math</a></li>
+            <li><a href="about.html#disclaimer">Full Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Peptide Calculator. For educational and mathematical purposes only.</span>
+        <span>Zero cookies &bull; Zero tracking &bull; 100% Client-Side</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
